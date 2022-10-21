@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+long long int sumOrProduct(long long int n, long long int q)
+{
+	// Write your code here.
+   // int sum=0;
+   
+    if(q==1)
+    {
+      return (n*(n+1))/2;
+    }
+    else if(q==2)
+    {
+        
+        long long int fact=1;
+        for(int i=1;i<=n;i++)
+        {
+            fact=fact*i;
+            fact%=1000000000+7;
+        }
+        return fact;
+    }
+}

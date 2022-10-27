@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+
+   struct node
+    {
+        int data;
+        struct node *next;
+    };
+
+    struct node *start =NULL , *temp;
+
+void create(int n)
+{
+    struct node *ptr;
+
+    ptr=(struct node*)malloc(sizeof(struct node*));
+
+    ptr->data=n;
+    ptr->next=NULL;
+
+    if(start==NULL){
+        start=ptr;
+    }
+    else{
+        temp=start;
+        while(temp ->next!=NULL){
+
+            temp=temp->next;
+        }
+        temp->next=ptr;
+    }
+}
+
+void display()
+{
+    temp=start;
+    if(start==NULL)
+    {
+       cout<<"list is empty"<<endl;
+    }
+    else
+        temp=start;
+    while(temp!=NULL)
+    {
+        cout<<temp->data;
+        temp=temp->next;
+    }
+}
+
+
+
+int main()
+{
+
+
+    while(true){
+
+    cout<<"Enter your choice"<<endl;
+    cout<<"1:add new node to linked list"<<endl;
+    cout<<"2:display the linked list"<<endl;
+    cout<<"3:exit"<<endl;
+
+
+        int choice;
+        cin>>choice;
+
+        switch(choice)
+        {
+        case 1:
+            int n;
+            cout<<"enter the value of data node : "<<endl;
+            cin>>n;
+            create(n);
+            cout<<endl;
+            break;
+
+        case 2:
+            cout<<"display the elements"<<endl;
+            display();
+            cout<<endl;
+            break;
+
+        case 3:
+            exit(0);
+
+        }
+    }
+
+}

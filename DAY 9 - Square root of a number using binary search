@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+long long int binary(long long int n , long long int s , long long int e )
+{
+   if(s>e)
+       return -1;
+    long long int mid=s+(e-s)/2;
+        long long int square=mid*mid;
+        if(square<=n&&(mid+1)*(mid+1)>n)
+        {
+            return mid;
+        }
+       if(square<n)
+        {
+         return binary(n,mid+1,e);
+        }
+        else
+         return binary(n,s,mid-1);
+    
+      mid=s+(e-s)/2;
+}
+
+int sqrtN(long long int N)
+{
+    // Write your code here.
+   return binary(N,0,N);
+}

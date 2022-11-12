@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    cout<< "Enter the number of elements :" << endl;
+    int n;
+    cin>>n;
+
+    int c;
+    cout << "Enter the capacity of knapsack  :" << endl;
+    cin>> c;
+
+    // declaring weight, profit, ratio
+    float w[n];
+    float p[n];
+    float r[n];
+
+    // take input for weight
+    cout << endl << "Enter the weights of knapsack :" <<endl;
+    for(int i=0;i<n;i++){
+        cin >> w[i];
+    }
+
+    // take input for profit
+    cout << endl << "Enter the profits of knapsack  :" <<endl;
+    for(int i=0;i<n;i++){
+        cin >> p[i];
+    }
+
+    // calculating ratio
+    for(int i=0;i<n;i++){
+        r[i] = p[i]/w[i];
+    }
+
+      for(int i=0;i<n-1;i++)
+      {
+          for(int j=0;j<n-i-1;j++)
+          {
+              if(r[j]<r[j+1]){
+              float t;
+              //swapping ratios
+              t=r[j];
+              r[j]=r[j+1];
+              r[j+1]=t;
+              //swapping profits
+              t=p[j];
+              p[j]=p[j+1];
+              p[j+1]=t;
+              //swapping weights
+              t=w[j];
+              w[j]=w[j+1];
+              w[j+1]=t;
+          }
+        }
+      }
+
+      float maxx=0;
+      int i=0;
+
+      while(w[i]<=c)
+      {
+          maxx+=p[i];
+          c=c-w[i];
+          i++;
+      }
+      if(w[i]>c)
+      {
+          maxx+=r[i]*c;
+      }
+
+      cout<<"maximum profit is "<<maxx<<endl;
+
+
+    return 0;
+}

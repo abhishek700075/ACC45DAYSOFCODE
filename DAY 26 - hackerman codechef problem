@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int a,b;
+	   cin>>a>>b;
+	    bool prime=true;
+	    int c=a+b;
+	    int i;
+	   // cin>>n;
+	    if(c==0||c==1)
+	    {
+	        prime=false;
+	    }
+	    for(int i=2;i<=c/2;++i)
+	    {
+	        if(c%i==0)
+	        {
+	            prime=false;
+	            break;
+	        }
+	    }
+	    if(prime)
+	    {
+	        cout<<"alice"<<endl;
+	    }
+	    else
+	    cout<<"bob"<<endl;
+	}
+	return 0;
+}

@@ -1,0 +1,102 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n,job[10],p[10],d[10];
+    cout<<"Number of jobs you want to enter :  ";
+    cin>>n;
+    cout<<"Enter jobs with respective deadline : ";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\n Job "<<i+1<<" : ";
+        cin>>job[i];
+        cout<<"Profit of Job "<<i+1<<" : ";
+        cin>>p[i];
+        cout<<"Deadline of Job "<<i+1<<" : ";
+        cin>>d[i];
+
+    }
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n-i-1;j++)
+        {
+            int x;
+            if(p[j]<p[j+1])
+            {
+                x=p[j];
+                p[j]=p[j+1];
+                p[j+1]=x;
+                
+                x=job[j];
+                job[j]=job[j+1];
+                job[j+1]=x;
+                
+                x=d[j];
+                d[j]=d[j+1];
+                d[j+1]=x;
+            }
+        }
+    }
+    cout<<"\n Jobs : ";
+    for(int i=0;i<n;i++)
+    {
+        cout<<job[i]<<"\t";
+    }
+    cout<<"\n Profits : ";
+    for(int i=0;i<n;i++)
+    {
+        cout<<p[i]<<"\t";
+    }
+    cout<<"\n deadlines : ";
+    for(int i=0;i<n;i++)
+    {
+        cout<<d[i]<<"\t";
+    }
+    int max_d=0;
+    for(int i=0;i<n;i++)
+    {
+        if(d[i]>max_d)
+        {
+            max_d=d[i];
+        }
+    }
+    int g[max_d];
+    for(int i=0;i<max_d;i++)
+    {
+        g[i]=-1;
+    }
+
+    for(int j=0;j<n;j++)
+    {
+        if(g[d[j]-1]==-1)
+        {
+            g[d[j]-1]=j;
+        }
+        else{
+
+             int k=d[j]-2;
+             while(k>=0)
+             {
+                if(g[k]==-1)
+            {
+                g[k]=j;
+                break;
+            }
+            k--;
+            }
+        }
+
+    }
+
+
+    cout<<"\n Sequence of jobs : ";
+    for(int i=0;i<max_d;i++)
+    {
+        cout<<g[i]<<"  ";
+    }
+    cout<<"\n Job Sequence : ";
+    for(int i=0;i<n;i++)
+    {
+        cout<<job[g[i]]<<"\t";
+    }
+}

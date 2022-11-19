@@ -1,0 +1,43 @@
+
+#include <bits/stdc++.h> 
+#include <bits/stdc++.h> 
+vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n ) {
+	// Write your code here.
+      vector<int> arr3;
+    int i=0 , j=0 , k=0;
+    
+    // below method copies the least value amoung arr1 and arr2 into arr3 
+    while(i<m && j<n)
+    {
+        if(arr1[i]<arr2[j])
+        {
+            arr3.push_back(arr1[i]);
+            //moving one index ahead bcoz this index is filled now another element will be copied              
+            into the upcoming index
+            k++;
+            i++;
+        }
+        else
+        {
+             arr3.push_back(arr2[j]);
+            k++;
+            j++;
+        }
+    }
+    
+    // below two cases will be applicable after one of the array have finished and now we 
+    have to copy the remaining array elements into the final array
+    while(i<m)
+    {
+         arr3.push_back(arr1[i]);
+        k++;
+        i++;
+    }
+    while(j<n)
+    {
+         arr3.push_back(arr2[j]);
+        k++;
+        j++;
+    }
+return arr3;
+}

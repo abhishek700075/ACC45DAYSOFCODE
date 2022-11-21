@@ -1,0 +1,18 @@
+void pushZerosAtEnd(vector<int> &arr) 
+{
+	// Write your code here.
+    int nonzero=0;
+    for(int j=0;j<arr.size();j++)
+    {
+        int t;
+        if(arr[j] !=0)
+        { 
+            t=arr[j];
+            arr[j]=arr[nonzero];
+            arr[nonzero]=t;
+            
+           // swap(arr[j] , arr[nonzero]);
+            nonzero++;
+        }
+    }
+}

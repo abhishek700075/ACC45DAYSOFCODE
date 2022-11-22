@@ -1,0 +1,59 @@
+#include <bits/stdc++.h> 
+bool to_check(char ch)
+{
+    if((ch>='a' && ch<='z')or (ch>='0'&& ch<='9'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+char tolower(char ch)
+{
+    if(ch>='A'&& ch<='Z')
+    {
+        return ch-'A'+'a';
+    }
+    else 
+    {
+        return ch;
+    }
+}
+
+
+
+bool checkPalindrome(string s)
+{
+    // Write your code here.
+    int st=0 , e=s.size()-1;
+    while(st<e)
+    {
+        if(to_check(tolower(s[st]))&& to_check(tolower(s[e])))
+           {
+               if(tolower(s[st])!=tolower(s[e]))
+               {
+                   return false;
+               }
+           
+           else
+           {
+               st++;
+               e--;
+           }
+      }   
+           else if(!to_check(tolower(s[st])))
+                            {
+                                st++;
+                            }
+                            else
+                            {
+                            e--;
+                                }
+                            }
+                            return true;
+      }
+
+     
